@@ -12,6 +12,10 @@
 		45D1242E2286AB5000A6E16C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45D1242C2286AB5000A6E16C /* Main.storyboard */; };
 		45D124302286AB5100A6E16C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45D1242F2286AB5100A6E16C /* Assets.xcassets */; };
 		45D124332286AB5100A6E16C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45D124312286AB5100A6E16C /* LaunchScreen.storyboard */; };
+		45D124402286B0EE00A6E16C /* ViewControllerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D1243F2286B0EE00A6E16C /* ViewControllerPresenter.swift */; };
+		45D124442286C47900A6E16C /* TutorialViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45D124432286C47900A6E16C /* TutorialViewController.storyboard */; };
+		45D124462286C4C800A6E16C /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D124452286C4C800A6E16C /* TutorialViewController.swift */; };
+		45D124482286CD6000A6E16C /* TutorialViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D124472286CD6000A6E16C /* TutorialViewPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,10 @@
 		45D1242F2286AB5100A6E16C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		45D124322286AB5100A6E16C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		45D124342286AB5100A6E16C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		45D1243F2286B0EE00A6E16C /* ViewControllerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerPresenter.swift; sourceTree = "<group>"; };
+		45D124432286C47900A6E16C /* TutorialViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TutorialViewController.storyboard; sourceTree = "<group>"; };
+		45D124452286C4C800A6E16C /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
+		45D124472286CD6000A6E16C /* TutorialViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +62,74 @@
 		45D124272286AB5000A6E16C /* Tutorial-Paging-Sample */ = {
 			isa = PBXGroup;
 			children = (
+				45D1243C2286AD8300A6E16C /* Main */,
+				45D1243B2286AD5900A6E16C /* Tutorial */,
+				45D1243A2286AD5600A6E16C /* Other */,
+			);
+			path = "Tutorial-Paging-Sample";
+			sourceTree = "<group>";
+		};
+		45D1243A2286AD5600A6E16C /* Other */ = {
+			isa = PBXGroup;
+			children = (
 				45D124282286AB5000A6E16C /* AppDelegate.swift */,
-				45D1242A2286AB5000A6E16C /* ViewController.swift */,
-				45D1242C2286AB5000A6E16C /* Main.storyboard */,
 				45D1242F2286AB5100A6E16C /* Assets.xcassets */,
 				45D124312286AB5100A6E16C /* LaunchScreen.storyboard */,
 				45D124342286AB5100A6E16C /* Info.plist */,
 			);
-			path = "Tutorial-Paging-Sample";
+			path = Other;
+			sourceTree = "<group>";
+		};
+		45D1243B2286AD5900A6E16C /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				45D124422286C46400A6E16C /* View */,
+				45D124412286C46200A6E16C /* Presenter */,
+			);
+			path = Tutorial;
+			sourceTree = "<group>";
+		};
+		45D1243C2286AD8300A6E16C /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				45D1243E2286B0CC00A6E16C /* View */,
+				45D1243D2286B0C700A6E16C /* Presenter */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		45D1243D2286B0C700A6E16C /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				45D1243F2286B0EE00A6E16C /* ViewControllerPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		45D1243E2286B0CC00A6E16C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				45D1242A2286AB5000A6E16C /* ViewController.swift */,
+				45D1242C2286AB5000A6E16C /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		45D124412286C46200A6E16C /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				45D124472286CD6000A6E16C /* TutorialViewPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		45D124422286C46400A6E16C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				45D124432286C47900A6E16C /* TutorialViewController.storyboard */,
+				45D124452286C4C800A6E16C /* TutorialViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -123,6 +191,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				45D124332286AB5100A6E16C /* LaunchScreen.storyboard in Resources */,
+				45D124442286C47900A6E16C /* TutorialViewController.storyboard in Resources */,
 				45D124302286AB5100A6E16C /* Assets.xcassets in Resources */,
 				45D1242E2286AB5000A6E16C /* Main.storyboard in Resources */,
 			);
@@ -135,7 +204,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45D124402286B0EE00A6E16C /* ViewControllerPresenter.swift in Sources */,
+				45D124482286CD6000A6E16C /* TutorialViewPresenter.swift in Sources */,
 				45D1242B2286AB5000A6E16C /* ViewController.swift in Sources */,
+				45D124462286C4C800A6E16C /* TutorialViewController.swift in Sources */,
 				45D124292286AB5000A6E16C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -284,7 +356,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LVR5UQEHBD;
-				INFOPLIST_FILE = "Tutorial-Paging-Sample/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Tutorial-Paging-Sample/Other/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,7 +374,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LVR5UQEHBD;
-				INFOPLIST_FILE = "Tutorial-Paging-Sample/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Tutorial-Paging-Sample/Other/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

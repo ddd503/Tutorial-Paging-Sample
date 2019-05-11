@@ -1,0 +1,19 @@
+//
+//  ViewControllerPresenter.swift
+//  Tutorial-Paging-Sample
+//
+//  Created by kawaharadai on 2019/05/11.
+//  Copyright © 2019 kawaharadai. All rights reserved.
+//
+
+import Foundation
+
+protocol ViewControllerPresenterDelegate: class {
+
+}
+
+final class ViewControllerPresenter {
+
+    weak var delegate: ViewControllerPresenterDelegate?
+    
+}
