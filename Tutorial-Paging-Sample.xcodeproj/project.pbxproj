@@ -16,6 +16,11 @@
 		45D124442286C47900A6E16C /* TutorialViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45D124432286C47900A6E16C /* TutorialViewController.storyboard */; };
 		45D124462286C4C800A6E16C /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D124452286C4C800A6E16C /* TutorialViewController.swift */; };
 		45D124482286CD6000A6E16C /* TutorialViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D124472286CD6000A6E16C /* TutorialViewPresenter.swift */; };
+		45D1244A2286E62D00A6E16C /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D124492286E62D00A6E16C /* PageViewController.swift */; };
+		45D1244F2286E74900A6E16C /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D1244D2286E74900A6E16C /* InfoViewController.swift */; };
+		45D124502286E74900A6E16C /* InfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45D1244E2286E74900A6E16C /* InfoViewController.xib */; };
+		45D124532286EEE100A6E16C /* Infomation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D124522286EEE100A6E16C /* Infomation.swift */; };
+		45D124552286F32A00A6E16C /* PageViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D124542286F32A00A6E16C /* PageViewPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +35,11 @@
 		45D124432286C47900A6E16C /* TutorialViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TutorialViewController.storyboard; sourceTree = "<group>"; };
 		45D124452286C4C800A6E16C /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		45D124472286CD6000A6E16C /* TutorialViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewPresenter.swift; sourceTree = "<group>"; };
+		45D124492286E62D00A6E16C /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		45D1244D2286E74900A6E16C /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		45D1244E2286E74900A6E16C /* InfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoViewController.xib; sourceTree = "<group>"; };
+		45D124522286EEE100A6E16C /* Infomation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Infomation.swift; sourceTree = "<group>"; };
+		45D124542286F32A00A6E16C /* PageViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +93,7 @@
 		45D1243B2286AD5900A6E16C /* Tutorial */ = {
 			isa = PBXGroup;
 			children = (
+				45D124512286EEBF00A6E16C /* Model */,
 				45D124422286C46400A6E16C /* View */,
 				45D124412286C46200A6E16C /* Presenter */,
 			);
@@ -119,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				45D124472286CD6000A6E16C /* TutorialViewPresenter.swift */,
+				45D124542286F32A00A6E16C /* PageViewPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -128,8 +140,19 @@
 			children = (
 				45D124432286C47900A6E16C /* TutorialViewController.storyboard */,
 				45D124452286C4C800A6E16C /* TutorialViewController.swift */,
+				45D124492286E62D00A6E16C /* PageViewController.swift */,
+				45D1244D2286E74900A6E16C /* InfoViewController.swift */,
+				45D1244E2286E74900A6E16C /* InfoViewController.xib */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		45D124512286EEBF00A6E16C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				45D124522286EEE100A6E16C /* Infomation.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,6 +216,7 @@
 				45D124332286AB5100A6E16C /* LaunchScreen.storyboard in Resources */,
 				45D124442286C47900A6E16C /* TutorialViewController.storyboard in Resources */,
 				45D124302286AB5100A6E16C /* Assets.xcassets in Resources */,
+				45D124502286E74900A6E16C /* InfoViewController.xib in Resources */,
 				45D1242E2286AB5000A6E16C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -206,9 +230,13 @@
 			files = (
 				45D124402286B0EE00A6E16C /* ViewControllerPresenter.swift in Sources */,
 				45D124482286CD6000A6E16C /* TutorialViewPresenter.swift in Sources */,
+				45D124552286F32A00A6E16C /* PageViewPresenter.swift in Sources */,
 				45D1242B2286AB5000A6E16C /* ViewController.swift in Sources */,
+				45D1244F2286E74900A6E16C /* InfoViewController.swift in Sources */,
+				45D1244A2286E62D00A6E16C /* PageViewController.swift in Sources */,
 				45D124462286C4C800A6E16C /* TutorialViewController.swift in Sources */,
 				45D124292286AB5000A6E16C /* AppDelegate.swift in Sources */,
+				45D124532286EEE100A6E16C /* Infomation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

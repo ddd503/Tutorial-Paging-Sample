@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InfoViewController" customModule="Tutorial_Paging_Sample" customModuleProvider="target">
+            <connections>
+                <outlet property="messageLabel" destination="pwf-81-4KZ" id="7xd-Qz-DSO"/>
+                <outlet property="themeImageView" destination="z53-pt-ws0" id="BOD-4g-1yL"/>
+                <outlet property="titleLabel" destination="ji2-7I-nqc" id="gQW-1s-WpL"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="airplain" translatesAutoresizingMaskIntoConstraints="NO" id="z53-pt-ws0">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="358.5"/>
+                </imageView>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="タイトル" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ji2-7I-nqc">
+                    <rect key="frame" x="120" y="388.5" width="174.5" height="44"/>
+                    <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="44"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="メッセージ" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pwf-81-4KZ">
+                    <rect key="frame" x="142" y="462.5" width="130.5" height="26"/>
+                    <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="26"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="ji2-7I-nqc" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="2Du-wQ-v9p"/>
+                <constraint firstItem="z53-pt-ws0" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="8gh-fv-tON"/>
+                <constraint firstItem="z53-pt-ws0" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.4" id="CXk-TH-gJb"/>
+                <constraint firstItem="z53-pt-ws0" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="GYd-Ww-Urv"/>
+                <constraint firstItem="pwf-81-4KZ" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Jl8-WX-uR6"/>
+                <constraint firstItem="pwf-81-4KZ" firstAttribute="top" secondItem="ji2-7I-nqc" secondAttribute="bottom" constant="30" id="LHi-Ts-42H"/>
+                <constraint firstItem="z53-pt-ws0" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Pk5-al-TAM"/>
+                <constraint firstItem="ji2-7I-nqc" firstAttribute="top" secondItem="z53-pt-ws0" secondAttribute="bottom" constant="30" id="fCO-s4-A7j"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="airplain" width="960" height="640"/>
+    </resources>
+</document>

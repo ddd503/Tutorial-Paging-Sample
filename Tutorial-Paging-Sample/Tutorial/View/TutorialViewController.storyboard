@@ -33,6 +33,12 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sl3-Ek-EqQ">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <connections>
+                                    <segue destination="nbh-f8-6wL" kind="embed" id="2yX-lz-weW"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -40,6 +46,10 @@
                             <constraint firstItem="ebi-2g-alB" firstAttribute="width" secondItem="7kZ-YQ-iye" secondAttribute="width" id="NWH-ax-qBQ"/>
                             <constraint firstAttribute="bottom" secondItem="ebi-2g-alB" secondAttribute="bottom" id="YCp-nz-ZeB"/>
                             <constraint firstItem="ebi-2g-alB" firstAttribute="height" secondItem="7kZ-YQ-iye" secondAttribute="height" multiplier="0.2" id="cgR-hP-sDF"/>
+                            <constraint firstItem="Sl3-Ek-EqQ" firstAttribute="top" secondItem="7kZ-YQ-iye" secondAttribute="top" id="jgb-k9-enA"/>
+                            <constraint firstAttribute="bottom" secondItem="Sl3-Ek-EqQ" secondAttribute="bottom" id="slh-ow-KrJ"/>
+                            <constraint firstItem="Sl3-Ek-EqQ" firstAttribute="leading" secondItem="Vqv-Wj-MO1" secondAttribute="leading" id="uXD-tw-MTC"/>
+                            <constraint firstItem="Vqv-Wj-MO1" firstAttribute="trailing" secondItem="Sl3-Ek-EqQ" secondAttribute="trailing" id="vU8-R1-73l"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Vqv-Wj-MO1"/>
                     </view>
@@ -47,6 +57,20 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OX3-2O-Bj6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="31.884057971014496" y="145.98214285714286"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="M9v-FS-zly">
+            <objects>
+                <viewController id="nbh-f8-6wL" customClass="PageViewController" customModule="Tutorial_Paging_Sample" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="c63-vb-PWs">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="blk-sd-cOu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="754" y="146"/>
         </scene>
     </scenes>
 </document>
