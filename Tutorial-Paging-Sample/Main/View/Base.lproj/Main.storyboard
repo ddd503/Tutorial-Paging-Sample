@@ -31,7 +31,7 @@
                                         <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
                                     </activityIndicatorView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="Gah-0r-MXj" firstAttribute="centerY" secondItem="p0D-gf-eqC" secondAttribute="centerY" id="5Ab-rt-BDY"/>
                                     <constraint firstItem="Gah-0r-MXj" firstAttribute="centerX" secondItem="p0D-gf-eqC" secondAttribute="centerX" id="oRS-SG-Jym"/>

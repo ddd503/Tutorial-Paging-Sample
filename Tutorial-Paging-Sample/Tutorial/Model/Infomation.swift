@@ -6,6 +6,20 @@
 //  Copyright © 2019 kawaharadai. All rights reserved.
 //
 
-struct Infomation {
-    let text: String
+struct TutorialData: Decodable {
+    let info: [Infomation]
+}
+
+struct Infomation: Decodable {
+    let pageNumber: Int
+    let title: String
+    let message: String
+    let theme: String
+
+    private enum CodingKeys: String, CodingKey {
+        case pageNumber = "number"
+        case title
+        case message
+        case theme
+    }
 }

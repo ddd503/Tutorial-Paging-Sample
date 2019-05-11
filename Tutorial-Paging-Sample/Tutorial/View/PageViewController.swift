@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PageViewController: UIPageViewController {
+class PageViewController: UIPageViewController, PageViewPresenterDelegate {
 
     private let presenter = PageViewPresenter()
     private var infoViewControllers = [InfoViewController]()
@@ -20,9 +20,6 @@ class PageViewController: UIPageViewController {
         presenter.viewDidLoad()
     }
 
-}
-
-extension PageViewController: PageViewPresenterDelegate {
     func prepared(infoViewControllers: [InfoViewController]) {
         self.infoViewControllers = infoViewControllers
         setViewControllers(infoViewControllers,

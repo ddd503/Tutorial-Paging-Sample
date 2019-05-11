@@ -13,8 +13,12 @@ class InfoViewController: UIViewController {
     @IBOutlet weak private var themeImageView: UIImageView!
     @IBOutlet weak private var titleLabel: UILabel!
     @IBOutlet weak private var messageLabel: UILabel!
+    private let info: Infomation
+    private let pageNumber: Int
 
     init(info: Infomation) {
+        self.info = info
+        self.pageNumber = info.pageNumber
         super.init(nibName: String(describing: InfoViewController.self),
                    bundle: Bundle(for: type(of: self)))
     }
@@ -25,7 +29,19 @@ class InfoViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        titleLabel.text = info.title
+        messageLabel.text = info.message
+        setTheme()
+    }
 
+    private func setTheme() {
+        if let theme = ThemeType(rawValue: info.theme) {
+            themeImageView.image = UIImage(named: theme.imageName)
+            view.backgroundColor = theme.color
+        } else {
+            themeImageView.image = UIImage(named: "no_image")
+            view.backgroundColor = .gray
+        }
     }
 
 }

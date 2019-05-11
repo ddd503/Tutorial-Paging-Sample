@@ -21,6 +21,9 @@
 		45D124502286E74900A6E16C /* InfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45D1244E2286E74900A6E16C /* InfoViewController.xib */; };
 		45D124532286EEE100A6E16C /* Infomation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D124522286EEE100A6E16C /* Infomation.swift */; };
 		45D124552286F32A00A6E16C /* PageViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D124542286F32A00A6E16C /* PageViewPresenter.swift */; };
+		45D124572287121400A6E16C /* tutorial_Info.json in Resources */ = {isa = PBXBuildFile; fileRef = 45D124562287121400A6E16C /* tutorial_Info.json */; };
+		45D1245B22872C9200A6E16C /* TutorialDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D1245A22872C9200A6E16C /* TutorialDataStore.swift */; };
+		45D1245D22873D9200A6E16C /* ThemeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D1245C22873D9200A6E16C /* ThemeType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +43,9 @@
 		45D1244E2286E74900A6E16C /* InfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoViewController.xib; sourceTree = "<group>"; };
 		45D124522286EEE100A6E16C /* Infomation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Infomation.swift; sourceTree = "<group>"; };
 		45D124542286F32A00A6E16C /* PageViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewPresenter.swift; sourceTree = "<group>"; };
+		45D124562287121400A6E16C /* tutorial_Info.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tutorial_Info.json; sourceTree = "<group>"; };
+		45D1245A22872C9200A6E16C /* TutorialDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialDataStore.swift; sourceTree = "<group>"; };
+		45D1245C22873D9200A6E16C /* ThemeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +88,7 @@
 		45D1243A2286AD5600A6E16C /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				45D124562287121400A6E16C /* tutorial_Info.json */,
 				45D124282286AB5000A6E16C /* AppDelegate.swift */,
 				45D1242F2286AB5100A6E16C /* Assets.xcassets */,
 				45D124312286AB5100A6E16C /* LaunchScreen.storyboard */,
@@ -151,6 +158,8 @@
 			isa = PBXGroup;
 			children = (
 				45D124522286EEE100A6E16C /* Infomation.swift */,
+				45D1245A22872C9200A6E16C /* TutorialDataStore.swift */,
+				45D1245C22873D9200A6E16C /* ThemeType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -216,6 +225,7 @@
 				45D124332286AB5100A6E16C /* LaunchScreen.storyboard in Resources */,
 				45D124442286C47900A6E16C /* TutorialViewController.storyboard in Resources */,
 				45D124302286AB5100A6E16C /* Assets.xcassets in Resources */,
+				45D124572287121400A6E16C /* tutorial_Info.json in Resources */,
 				45D124502286E74900A6E16C /* InfoViewController.xib in Resources */,
 				45D1242E2286AB5000A6E16C /* Main.storyboard in Resources */,
 			);
@@ -229,6 +239,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				45D124402286B0EE00A6E16C /* ViewControllerPresenter.swift in Sources */,
+				45D1245B22872C9200A6E16C /* TutorialDataStore.swift in Sources */,
+				45D1245D22873D9200A6E16C /* ThemeType.swift in Sources */,
 				45D124482286CD6000A6E16C /* TutorialViewPresenter.swift in Sources */,
 				45D124552286F32A00A6E16C /* PageViewPresenter.swift in Sources */,
 				45D1242B2286AB5000A6E16C /* ViewController.swift in Sources */,

@@ -9,11 +9,18 @@
 import Foundation
 
 protocol ViewControllerPresenterDelegate: class {
-
+    func presentTutorialViewController()
 }
 
 final class ViewControllerPresenter {
 
     weak var delegate: ViewControllerPresenterDelegate?
+    private var isNotFinishTutorial = true
+
+    func viewWillAppear() {
+        if isNotFinishTutorial {
+            delegate?.presentTutorialViewController()
+        }
+    }
     
 }

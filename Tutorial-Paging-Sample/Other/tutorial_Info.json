@@ -1,0 +1,28 @@
+{
+    "info": [
+        {
+            "number": 0,
+            "title": "タイトル１",
+            "message": "メッセージ１",
+            "theme": "red",
+        },
+        {
+            "number": 1,
+            "title": "タイトル２",
+            "message": "メッセージ２",
+            "theme": "blue",
+        },
+        {
+            "number": 2,
+            "title": "タイトル３",
+            "message": "メッセージ３",
+            "theme": "green",
+        },
+        {
+            "number": 3,
+            "title": "タイトル４",
+            "message": "メッセージ４",
+            "theme": "orange",
+        }
+    ]
+}

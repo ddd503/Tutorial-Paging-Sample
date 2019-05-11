@@ -8,16 +8,25 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, ViewControllerPresenterDelegate {
 
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var waitingView: UIView!
+    private let presenter = ViewControllerPresenter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        presenter.delegate = self
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        presenter.viewWillAppear()
+    }
+
+    func presentTutorialViewController() {
+        
+    }
 
 }
 

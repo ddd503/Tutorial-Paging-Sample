@@ -15,9 +15,11 @@ protocol PageViewPresenterDelegate: class {
 final class PageViewPresenter {
 
     weak var delegate: PageViewPresenterDelegate?
+    private var infomation = [Infomation]()
 
+    // MARK: Lifecycle
     func viewDidLoad() {
-        
+        prepareInfoViewControllers()
     }
 
     func afterViewController() -> InfoViewController? {
@@ -27,5 +29,19 @@ final class PageViewPresenter {
     func beforeViewController() -> InfoViewController? {
         return nil
     }
+
+    // MARK: Private
+    private func prepareInfoViewControllers() {
+        infomation = TutorialDataStore.requestTutorialInfo()
+
+        guard !infomation.isEmpty else { return }
+
+        var infoViewControllers = [InfoViewController]()
+        infomation.forEach {
+            infoViewControllers.append(InfoViewController(info: $0))
+        }
+    }
+
+
 
 }
