@@ -16,9 +16,12 @@ class PageViewController: UIPageViewController, PageViewPresenterDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        dataSource = self
         presenter.delegate = self
         presenter.viewDidLoad()
+    }
+
+    func setup() {
+        dataSource = self
     }
 
     func prepared(infoViewControllers: [InfoViewController]) {

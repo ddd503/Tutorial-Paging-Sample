@@ -9,6 +9,7 @@
 import Foundation
 
 protocol PageViewPresenterDelegate: class {
+    func setup()
     func prepared(infoViewControllers: [InfoViewController])
 }
 
@@ -16,20 +17,24 @@ final class PageViewPresenter {
 
     weak var delegate: PageViewPresenterDelegate?
     private var infoViewControllers = [InfoViewController]()
+    private var currentPageNumber = 1
 
     // MARK: Lifecycle
     func viewDidLoad() {
+        delegate?.setup()
         prepareInfoViewControllers()
     }
 
     func afterViewController(currentVC: InfoViewController?) -> InfoViewController? {
         guard let currentVC = currentVC else { return nil }
-        return (infoViewControllers.count > currentVC.pageNumber) ? infoViewControllers[currentVC.pageNumber] : nil
+        return (infoViewControllers.count > currentVC.pageNumber) ?
+            infoViewControllers[currentVC.pageNumber] : nil
     }
 
     func beforeViewController(currentVC: InfoViewController?) -> InfoViewController? {
         guard let currentVC = currentVC else { return nil }
-        return (currentVC.pageNumber > 1) ? infoViewControllers[currentVC.pageNumber - 2] : nil
+        return (currentVC.pageNumber > 1) ?
+            infoViewControllers[currentVC.pageNumber - 2] : nil
     }
 
     // MARK: Private
