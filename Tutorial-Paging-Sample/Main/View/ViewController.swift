@@ -19,13 +19,18 @@ class ViewController: UIViewController, ViewControllerPresenterDelegate {
         presenter.delegate = self
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        presenter.viewWillAppear()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        presenter.viewDidAppear()
     }
 
     func presentTutorialViewController() {
-        
+        guard let tutorialVC = TutorialViewController.make() else {
+            print("TutorialViewControllerの取得に失敗")
+            return
+        }
+        waitingView.isHidden = true
+        present(tutorialVC, animated: true)
     }
 
 }

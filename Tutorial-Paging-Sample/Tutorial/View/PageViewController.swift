@@ -16,16 +16,15 @@ class PageViewController: UIPageViewController, PageViewPresenterDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        dataSource = self
         presenter.delegate = self
         presenter.viewDidLoad()
     }
 
     func prepared(infoViewControllers: [InfoViewController]) {
         self.infoViewControllers = infoViewControllers
-        setViewControllers(infoViewControllers,
-                           direction: .forward,
-                           animated: false,
-                           completion: nil)
+        guard !self.infoViewControllers.isEmpty else { return }
+        setViewControllers([self.infoViewControllers[0]], direction: .forward, animated: false, completion: nil)
     }
 
 }
@@ -34,12 +33,12 @@ extension PageViewController: UIPageViewControllerDataSource {
 
     // LeftPaging
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        return presenter.afterViewController()
+        return presenter.afterViewController(currentVC: viewController as? InfoViewController)
     }
 
     // RightPaging
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        return presenter.beforeViewController()
+        return presenter.beforeViewController(currentVC: viewController as? InfoViewController)
     }
 
 }

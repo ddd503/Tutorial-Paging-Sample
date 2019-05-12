@@ -17,7 +17,7 @@ final class ViewControllerPresenter {
     weak var delegate: ViewControllerPresenterDelegate?
     private var isNotFinishTutorial = true
 
-    func viewWillAppear() {
+    func viewDidAppear() {
         if isNotFinishTutorial {
             delegate?.presentTutorialViewController()
         }

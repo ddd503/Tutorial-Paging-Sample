@@ -15,33 +15,33 @@ protocol PageViewPresenterDelegate: class {
 final class PageViewPresenter {
 
     weak var delegate: PageViewPresenterDelegate?
-    private var infomation = [Infomation]()
+    private var infoViewControllers = [InfoViewController]()
 
     // MARK: Lifecycle
     func viewDidLoad() {
         prepareInfoViewControllers()
     }
 
-    func afterViewController() -> InfoViewController? {
-        return nil
+    func afterViewController(currentVC: InfoViewController?) -> InfoViewController? {
+        guard let currentVC = currentVC else { return nil }
+        return (infoViewControllers.count > currentVC.pageNumber) ? infoViewControllers[currentVC.pageNumber] : nil
     }
 
-    func beforeViewController() -> InfoViewController? {
-        return nil
+    func beforeViewController(currentVC: InfoViewController?) -> InfoViewController? {
+        guard let currentVC = currentVC else { return nil }
+        return (currentVC.pageNumber > 1) ? infoViewControllers[currentVC.pageNumber - 2] : nil
     }
 
     // MARK: Private
     private func prepareInfoViewControllers() {
-        infomation = TutorialDataStore.requestTutorialInfo()
+        let infomation = TutorialDataStore.requestTutorialInfo()
 
         guard !infomation.isEmpty else { return }
 
-        var infoViewControllers = [InfoViewController]()
         infomation.forEach {
             infoViewControllers.append(InfoViewController(info: $0))
         }
+        delegate?.prepared(infoViewControllers: infoViewControllers)
     }
-
-
 
 }

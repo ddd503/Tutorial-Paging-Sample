@@ -14,13 +14,13 @@ class InfoViewController: UIViewController {
     @IBOutlet weak private var titleLabel: UILabel!
     @IBOutlet weak private var messageLabel: UILabel!
     private let info: Infomation
-    private let pageNumber: Int
+    let pageNumber: Int
 
     init(info: Infomation) {
         self.info = info
         self.pageNumber = info.pageNumber
         super.init(nibName: String(describing: InfoViewController.self),
-                   bundle: Bundle(for: type(of: self)))
+                   bundle: .main)
     }
 
     required init?(coder aDecoder: NSCoder) {
