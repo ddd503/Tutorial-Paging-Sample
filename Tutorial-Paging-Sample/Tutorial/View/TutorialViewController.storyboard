@@ -18,10 +18,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sl3-Ek-EqQ">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WUc-dA-hw9">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <connections>
-                                    <segue destination="Pjo-KO-wEa" kind="embed" id="YOo-hS-9qS"/>
+                                    <segue destination="khA-X6-9s8" kind="embed" id="OcC-Xt-a8l"/>
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ebi-2g-alB">
@@ -43,13 +43,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ebi-2g-alB" firstAttribute="centerX" secondItem="7kZ-YQ-iye" secondAttribute="centerX" id="4oc-uD-uBX"/>
+                            <constraint firstItem="WUc-dA-hw9" firstAttribute="leading" secondItem="Vqv-Wj-MO1" secondAttribute="leading" id="7iV-rk-nEh"/>
                             <constraint firstItem="ebi-2g-alB" firstAttribute="width" secondItem="7kZ-YQ-iye" secondAttribute="width" id="NWH-ax-qBQ"/>
+                            <constraint firstItem="WUc-dA-hw9" firstAttribute="top" secondItem="7kZ-YQ-iye" secondAttribute="top" id="Sfm-4A-xcS"/>
                             <constraint firstAttribute="bottom" secondItem="ebi-2g-alB" secondAttribute="bottom" id="YCp-nz-ZeB"/>
                             <constraint firstItem="ebi-2g-alB" firstAttribute="height" secondItem="7kZ-YQ-iye" secondAttribute="height" multiplier="0.2" id="cgR-hP-sDF"/>
-                            <constraint firstItem="Sl3-Ek-EqQ" firstAttribute="top" secondItem="7kZ-YQ-iye" secondAttribute="top" id="jgb-k9-enA"/>
-                            <constraint firstAttribute="bottom" secondItem="Sl3-Ek-EqQ" secondAttribute="bottom" id="slh-ow-KrJ"/>
-                            <constraint firstItem="Sl3-Ek-EqQ" firstAttribute="leading" secondItem="Vqv-Wj-MO1" secondAttribute="leading" id="uXD-tw-MTC"/>
-                            <constraint firstItem="Vqv-Wj-MO1" firstAttribute="trailing" secondItem="Sl3-Ek-EqQ" secondAttribute="trailing" id="vU8-R1-73l"/>
+                            <constraint firstAttribute="bottom" secondItem="WUc-dA-hw9" secondAttribute="bottom" id="jYb-Lm-cGr"/>
+                            <constraint firstItem="Vqv-Wj-MO1" firstAttribute="trailing" secondItem="WUc-dA-hw9" secondAttribute="trailing" id="wxF-hg-1b2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Vqv-Wj-MO1"/>
                     </view>
@@ -58,13 +58,33 @@
             </objects>
             <point key="canvasLocation" x="31.884057971014496" y="145.98214285714286"/>
         </scene>
-        <!--Page View Controller-->
-        <scene sceneID="YdL-xf-oaP">
+        <!--Info List View Controller-->
+        <scene sceneID="Ly3-S5-0Gh">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="Pjo-KO-wEa" customClass="PageViewController" customModule="Tutorial_Paging_Sample" customModuleProvider="target" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7If-Ka-slM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="khA-X6-9s8" customClass="InfoListViewController" customModule="Tutorial_Paging_Sample" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ixe-Zb-Pzp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GHh-z3-kfE">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="GHh-z3-kfE" firstAttribute="top" secondItem="ixe-Zb-Pzp" secondAttribute="top" id="E7e-ju-zTW"/>
+                            <constraint firstItem="GHh-z3-kfE" firstAttribute="leading" secondItem="ixe-Zb-Pzp" secondAttribute="leading" id="GFq-3N-FcX"/>
+                            <constraint firstAttribute="trailing" secondItem="GHh-z3-kfE" secondAttribute="trailing" id="Iur-ib-4UQ"/>
+                            <constraint firstAttribute="bottom" secondItem="GHh-z3-kfE" secondAttribute="bottom" id="OW9-Ll-CAB"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="scrollView" destination="GHh-z3-kfE" id="JrE-Fh-PwF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VuA-TZ-gq8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="909" y="153"/>
+            <point key="canvasLocation" x="774" y="156"/>
         </scene>
     </scenes>
 </document>
