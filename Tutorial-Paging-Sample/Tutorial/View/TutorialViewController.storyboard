@@ -24,35 +24,36 @@
                                     <segue destination="khA-X6-9s8" kind="embed" id="OcC-Xt-a8l"/>
                                 </connections>
                             </containerView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ebi-2g-alB">
-                                <rect key="frame" x="0.0" y="717" width="414" height="179"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fhz-GZ-1n3">
-                                        <rect key="frame" x="137" y="81" width="140" height="56"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button"/>
-                                    </button>
-                                    <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="wFb-yM-0Ae">
-                                        <rect key="frame" x="179" y="36" width="39" height="37"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </pageControl>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fhz-GZ-1n3">
+                                <rect key="frame" x="168.5" y="699.5" width="77" height="35"/>
+                                <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="23"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTapForwardButton:" destination="hf1-8S-F78" eventType="touchUpInside" id="YLS-3u-x6f"/>
+                                </connections>
+                            </button>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="wFb-yM-0Ae">
+                                <rect key="frame" x="187.5" y="657.5" width="39" height="37"/>
+                            </pageControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="ebi-2g-alB" firstAttribute="centerX" secondItem="7kZ-YQ-iye" secondAttribute="centerX" id="4oc-uD-uBX"/>
+                            <constraint firstItem="fhz-GZ-1n3" firstAttribute="centerY" secondItem="7kZ-YQ-iye" secondAttribute="centerY" multiplier="1.6" id="36Q-QM-xv8"/>
                             <constraint firstItem="WUc-dA-hw9" firstAttribute="leading" secondItem="Vqv-Wj-MO1" secondAttribute="leading" id="7iV-rk-nEh"/>
-                            <constraint firstItem="ebi-2g-alB" firstAttribute="width" secondItem="7kZ-YQ-iye" secondAttribute="width" id="NWH-ax-qBQ"/>
                             <constraint firstItem="WUc-dA-hw9" firstAttribute="top" secondItem="7kZ-YQ-iye" secondAttribute="top" id="Sfm-4A-xcS"/>
-                            <constraint firstAttribute="bottom" secondItem="ebi-2g-alB" secondAttribute="bottom" id="YCp-nz-ZeB"/>
-                            <constraint firstItem="ebi-2g-alB" firstAttribute="height" secondItem="7kZ-YQ-iye" secondAttribute="height" multiplier="0.2" id="cgR-hP-sDF"/>
+                            <constraint firstItem="fhz-GZ-1n3" firstAttribute="top" secondItem="wFb-yM-0Ae" secondAttribute="bottom" constant="5" id="diQ-hZ-DVZ"/>
+                            <constraint firstItem="fhz-GZ-1n3" firstAttribute="centerX" secondItem="7kZ-YQ-iye" secondAttribute="centerX" id="fLw-yB-ha9"/>
                             <constraint firstAttribute="bottom" secondItem="WUc-dA-hw9" secondAttribute="bottom" id="jYb-Lm-cGr"/>
+                            <constraint firstItem="wFb-yM-0Ae" firstAttribute="centerX" secondItem="7kZ-YQ-iye" secondAttribute="centerX" id="vY6-gT-3bh"/>
                             <constraint firstItem="Vqv-Wj-MO1" firstAttribute="trailing" secondItem="WUc-dA-hw9" secondAttribute="trailing" id="wxF-hg-1b2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Vqv-Wj-MO1"/>
                     </view>
+                    <connections>
+                        <outlet property="forwardButton" destination="fhz-GZ-1n3" id="hWc-uM-cS8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OX3-2O-Bj6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -94,6 +95,7 @@
                             <constraint firstAttribute="trailing" secondItem="ikA-iq-Lhg" secondAttribute="trailing" id="Rjz-3d-jDl"/>
                             <constraint firstAttribute="bottom" secondItem="ikA-iq-Lhg" secondAttribute="bottom" id="YZV-5R-vFP"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="AFY-k2-4hT"/>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="ikA-iq-Lhg" id="9RD-R0-eXo"/>

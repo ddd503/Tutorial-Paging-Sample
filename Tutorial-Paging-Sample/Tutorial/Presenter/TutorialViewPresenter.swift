@@ -9,11 +9,14 @@
 import Foundation
 
 protocol TutorialViewPresenterDelegate: class {
-
+     func setup()
 }
 
 final class TutorialViewPresenter {
 
     weak var delegate: TutorialViewPresenterDelegate?
 
+    func viewDidLoad() {
+        delegate?.setup()
+    }
 }
