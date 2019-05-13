@@ -8,10 +8,16 @@
 
 import UIKit
 
+protocol InfoListViewControllerDelegate: class {
+    func preparedInfoList(infoCount: Int)
+    func infoListViewDidEndDecelerating(currentPageNumber: Int)
+}
+
 class InfoListViewController: UIViewController, InfoListViewPresenterDelegate {
 
     @IBOutlet weak private var collectionView: UICollectionView!
 
+    weak var delegate: InfoListViewControllerDelegate?
     private let presenter = InfoListViewPresenter()
 
     override func viewDidLoad() {
@@ -30,6 +36,7 @@ class InfoListViewController: UIViewController, InfoListViewPresenterDelegate {
         DispatchQueue.main.async { [weak self] in
             self?.collectionView.reloadData()
         }
+        delegate?.preparedInfoList(infoCount: presenter.infomationList.count)
     }
 
 }
@@ -57,5 +64,12 @@ extension InfoListViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return .zero
+    }
+
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if let collectionView = scrollView as? UICollectionView,
+            let currentInfoCell = collectionView.visibleCells.first as? InfoViewCell {
+            delegate?.infoListViewDidEndDecelerating(currentPageNumber: currentInfoCell.pageNumber)
+        }
     }
 }

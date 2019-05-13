@@ -15,7 +15,9 @@ class TutorialViewController: UIViewController, TutorialViewPresenterDelegate {
         return storyBoard.instantiateInitialViewController() as? TutorialViewController
     }
 
+    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var forwardButton: UIButton!
+    @IBOutlet weak var pageControl: UIPageControl!
 
     private let presenter = TutorialViewPresenter()
 
@@ -29,6 +31,12 @@ class TutorialViewController: UIViewController, TutorialViewPresenterDelegate {
         presenter.viewDidLoad()
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let infoListVC = segue.destination as? InfoListViewController, segue.identifier == "toInfoListViewController" {
+            infoListVC.delegate = self
+        }
+    }
+
     func setup() {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
@@ -40,8 +48,31 @@ class TutorialViewController: UIViewController, TutorialViewPresenterDelegate {
         }
     }
 
-    @IBAction func didTapForwardButton(_ sender: UIButton) {
-        print("tap")
+    func didSetCurrentPage(_ newPage: Int) {
+        DispatchQueue.main.async { [weak self] in
+            self?.pageControl.currentPage = newPage - 1
+        }
     }
 
+    @IBAction func didTapForwardButton(_ sender: UIButton) {
+        presenter.didTapForwardButton()
+    }
+
+    @IBAction func didTapPageControl(_ sender: UIPageControl) {
+
+    }
+
+}
+
+extension TutorialViewController: InfoListViewControllerDelegate {
+    func preparedInfoList(infoCount: Int) {
+        presenter.receivedAllPageCount(infoCount)
+        DispatchQueue.main.async { [weak self] in
+            self?.pageControl.numberOfPages = infoCount
+        }
+    }
+
+    func infoListViewDidEndDecelerating(currentPageNumber: Int) {
+        presenter.setCurrentPage(page: currentPageNumber)
+    }
 }

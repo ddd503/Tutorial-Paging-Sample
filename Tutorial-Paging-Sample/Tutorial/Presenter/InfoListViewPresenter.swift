@@ -16,7 +16,6 @@ protocol InfoListViewPresenterDelegate: class {
 class InfoListViewPresenter {
 
     weak var delegate: InfoListViewPresenterDelegate?
-    private var currentPageNumber = 1
     private(set) var infomationList = [Infomation]()
 
     // MARK: Lifecycle

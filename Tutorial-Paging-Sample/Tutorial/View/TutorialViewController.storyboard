@@ -21,7 +21,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WUc-dA-hw9">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <connections>
-                                    <segue destination="khA-X6-9s8" kind="embed" id="OcC-Xt-a8l"/>
+                                    <segue destination="khA-X6-9s8" kind="embed" identifier="toInfoListViewController" id="OcC-Xt-a8l"/>
                                 </connections>
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fhz-GZ-1n3">
@@ -36,6 +36,9 @@
                             </button>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="wFb-yM-0Ae">
                                 <rect key="frame" x="187.5" y="657.5" width="39" height="37"/>
+                                <connections>
+                                    <action selector="didTapPageControl:" destination="hf1-8S-F78" eventType="valueChanged" id="ddP-B1-eU3"/>
+                                </connections>
                             </pageControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -52,7 +55,9 @@
                         <viewLayoutGuide key="safeArea" id="Vqv-Wj-MO1"/>
                     </view>
                     <connections>
+                        <outlet property="containerView" destination="WUc-dA-hw9" id="Jm5-RE-8Cg"/>
                         <outlet property="forwardButton" destination="fhz-GZ-1n3" id="hWc-uM-cS8"/>
+                        <outlet property="pageControl" destination="wFb-yM-0Ae" id="rQh-Qk-U4Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OX3-2O-Bj6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -103,7 +108,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VuA-TZ-gq8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="774" y="156"/>
+            <point key="canvasLocation" x="774" y="145"/>
         </scene>
     </scenes>
 </document>
