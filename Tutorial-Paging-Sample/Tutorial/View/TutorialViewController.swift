@@ -19,6 +19,10 @@ class TutorialViewController: UIViewController, TutorialViewPresenterDelegate {
 
     private let presenter = TutorialViewPresenter()
 
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.delegate = self
