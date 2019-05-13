@@ -9,21 +9,25 @@
 import Foundation
 
 protocol InfoListViewPresenterDelegate: class {
-    func preparedInfoList(_ infoList: [Infomation])
+    func setup()
+    func preparedInfoList()
 }
 
 class InfoListViewPresenter {
 
     weak var delegate: InfoListViewPresenterDelegate?
     private var currentPageNumber = 1
+    private(set) var infomationList = [Infomation]()
 
     // MARK: Lifecycle
     func viewDidLoad() {
-        let infomation = TutorialDataStore.requestTutorialInfo()
-        guard !infomation.isEmpty else {
+        delegate?.setup()
+        infomationList = TutorialDataStore.requestTutorialInfo()
+        guard !infomationList.isEmpty else {
+            // エラー用のセルを出すもあり
             fatalError("ローカルにチュートリアル情報がありません")
         }
-        delegate?.preparedInfoList(infomation)
+        delegate?.preparedInfoList()
     }
 
 }

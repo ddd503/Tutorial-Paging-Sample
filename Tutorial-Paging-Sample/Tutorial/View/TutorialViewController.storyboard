@@ -66,20 +66,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GHh-z3-kfE">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ikA-iq-Lhg">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                            </scrollView>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="prQ-Nq-Idy">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Usl-QE-t1C">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="GHh-z3-kfE" firstAttribute="top" secondItem="ixe-Zb-Pzp" secondAttribute="top" id="E7e-ju-zTW"/>
-                            <constraint firstItem="GHh-z3-kfE" firstAttribute="leading" secondItem="ixe-Zb-Pzp" secondAttribute="leading" id="GFq-3N-FcX"/>
-                            <constraint firstAttribute="trailing" secondItem="GHh-z3-kfE" secondAttribute="trailing" id="Iur-ib-4UQ"/>
-                            <constraint firstAttribute="bottom" secondItem="GHh-z3-kfE" secondAttribute="bottom" id="OW9-Ll-CAB"/>
+                            <constraint firstItem="ikA-iq-Lhg" firstAttribute="top" secondItem="ixe-Zb-Pzp" secondAttribute="top" id="Byb-pz-c7g"/>
+                            <constraint firstItem="ikA-iq-Lhg" firstAttribute="leading" secondItem="ixe-Zb-Pzp" secondAttribute="leading" id="EWA-12-fwX"/>
+                            <constraint firstAttribute="trailing" secondItem="ikA-iq-Lhg" secondAttribute="trailing" id="Rjz-3d-jDl"/>
+                            <constraint firstAttribute="bottom" secondItem="ikA-iq-Lhg" secondAttribute="bottom" id="YZV-5R-vFP"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="scrollView" destination="GHh-z3-kfE" id="JrE-Fh-PwF"/>
+                        <outlet property="collectionView" destination="ikA-iq-Lhg" id="9RD-R0-eXo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VuA-TZ-gq8" userLabel="First Responder" sceneMemberID="firstResponder"/>
