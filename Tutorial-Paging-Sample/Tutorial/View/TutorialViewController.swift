@@ -45,6 +45,7 @@ class TutorialViewController: UIViewController, TutorialViewPresenterDelegate {
             self.forwardButton.layer.cornerRadius = 22
             self.forwardButton.layer.borderWidth = 2
             self.forwardButton.layer.borderColor = UIColor.white.cgColor
+            self.pageControl.hidesForSinglePage = true
         }
     }
 
@@ -54,12 +55,22 @@ class TutorialViewController: UIViewController, TutorialViewPresenterDelegate {
         }
     }
 
+    func updatedCurrentPage(_ newPage: Int) {
+        // ページ遷移
+    }
+
+    func updateButtonTitle(_ title: String) {
+        DispatchQueue.main.async { [weak self] in
+            self?.forwardButton.setTitle(title, for: .normal)
+        }
+    }
+
     @IBAction func didTapForwardButton(_ sender: UIButton) {
         presenter.didTapForwardButton()
     }
 
     @IBAction func didTapPageControl(_ sender: UIPageControl) {
-
+        presenter.didTapPageControl(newPage: sender.currentPage)
     }
 
 }
