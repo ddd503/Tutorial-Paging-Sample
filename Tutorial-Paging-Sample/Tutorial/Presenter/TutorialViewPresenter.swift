@@ -11,7 +11,7 @@ import Foundation
 protocol TutorialViewPresenterDelegate: class {
     func setup()
     func didSetCurrentPage(_ newPage: Int)
-    func updatedCurrentPage(_ newPage: Int)
+    func scrollInfoList(_ newPage: Int)
     func updateButtonTitle(_ title: String)
 }
 
@@ -40,23 +40,28 @@ final class TutorialViewPresenter {
 
     // ボタンによるページ遷移
     func didTapForwardButton() {
-        updatCurrentPage(newPage: (allPageCount > currentPage) ? currentPage + 1 : allPageCount)
+        updateCurrentPage(newPage: isLastPage() ? allPageCount - 1 : currentPage + 1)
     }
 
     // ページコントロールによるページ遷移
     func didTapPageControl(newPage: Int) {
-        // ページコントロールページコントロールは0を含むため1足す
-        updatCurrentPage(newPage: newPage + 1)
+        updateCurrentPage(newPage: newPage)
     }
 
-    private func updatCurrentPage(newPage: Int) {
+    private func isLastPage() -> Bool {
+        return currentPage >= allPageCount - 1
+    }
+
+    private func updateCurrentPage(newPage: Int) {
+        if !isLastPage() {
+            delegate?.scrollInfoList(newPage)
+        }
         currentPage = newPage
-        delegate?.updatedCurrentPage(currentPage)
         updateButtonTitleIfNeeded()
     }
 
     private func updateButtonTitleIfNeeded() {
-        let title = (allPageCount > currentPage) ? "次へ" : "さあ！始めよう！"
+        let title = isLastPage() ? "さあ！始めよう！" : "次へ"
         if title != currentButtonTitle {
             delegate?.updateButtonTitle(title)
             currentButtonTitle = title

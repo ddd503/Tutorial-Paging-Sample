@@ -24,6 +24,8 @@ class ViewController: UIViewController, ViewControllerPresenterDelegate {
         presenter.viewDidAppear()
     }
 
+    // MARK: ViewControllerPresenterDelegate
+
     func presentTutorialViewController() {
         guard let tutorialVC = TutorialViewController.make() else {
             print("TutorialViewControllerの取得に失敗")

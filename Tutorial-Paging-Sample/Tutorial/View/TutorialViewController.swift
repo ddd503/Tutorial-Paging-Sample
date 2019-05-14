@@ -20,6 +20,7 @@ class TutorialViewController: UIViewController, TutorialViewPresenterDelegate {
     @IBOutlet weak var pageControl: UIPageControl!
 
     private let presenter = TutorialViewPresenter()
+    private var infoListVC: InfoListViewController?
 
     override var prefersStatusBarHidden: Bool {
         return true
@@ -34,8 +35,19 @@ class TutorialViewController: UIViewController, TutorialViewPresenterDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let infoListVC = segue.destination as? InfoListViewController, segue.identifier == "toInfoListViewController" {
             infoListVC.delegate = self
+            self.infoListVC = infoListVC
         }
     }
+
+    @IBAction func didTapForwardButton(_ sender: UIButton) {
+        presenter.didTapForwardButton()
+    }
+
+    @IBAction func didTapPageControl(_ sender: UIPageControl) {
+        presenter.didTapPageControl(newPage: sender.currentPage)
+    }
+    
+    // MARK: TutorialViewPresenterDelegate
 
     func setup() {
         DispatchQueue.main.async { [weak self] in
@@ -51,26 +63,18 @@ class TutorialViewController: UIViewController, TutorialViewPresenterDelegate {
 
     func didSetCurrentPage(_ newPage: Int) {
         DispatchQueue.main.async { [weak self] in
-            self?.pageControl.currentPage = newPage - 1
+            self?.pageControl.currentPage = newPage
         }
     }
 
-    func updatedCurrentPage(_ newPage: Int) {
-        // ページ遷移
+    func scrollInfoList(_ newPage: Int) {
+        infoListVC?.setPage(newPage)
     }
 
     func updateButtonTitle(_ title: String) {
         DispatchQueue.main.async { [weak self] in
             self?.forwardButton.setTitle(title, for: .normal)
         }
-    }
-
-    @IBAction func didTapForwardButton(_ sender: UIButton) {
-        presenter.didTapForwardButton()
-    }
-
-    @IBAction func didTapPageControl(_ sender: UIPageControl) {
-        presenter.didTapPageControl(newPage: sender.currentPage)
     }
 
 }

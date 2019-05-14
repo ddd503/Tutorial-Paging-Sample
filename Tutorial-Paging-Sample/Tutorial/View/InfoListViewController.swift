@@ -26,6 +26,15 @@ class InfoListViewController: UIViewController, InfoListViewPresenterDelegate {
         presenter.viewDidLoad()
     }
 
+    func setPage(_ page: Int) {
+        DispatchQueue.main.async { [weak self] in
+            self?.collectionView.scrollToItem(at: IndexPath(item: page, section: 0), at: .init(), animated: true)
+        }
+        delegate?.infoListViewDidEndDecelerating(currentPageNumber: page)
+    }
+
+    // MARK: InfoListViewPresenterDelegate
+
     func setup() {
         collectionView.dataSource = self
         collectionView.delegate = self
