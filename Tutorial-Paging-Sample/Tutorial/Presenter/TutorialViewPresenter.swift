@@ -41,7 +41,7 @@ final class TutorialViewPresenter {
 
     // ボタンによるページ遷移
     func didTapForwardButton() {
-        updateCurrentPage(newPage: isLastPage() ? allPageCount - 1 : currentPage + 1)
+        updateCurrentPage(newPage: currentPage + 1)
     }
 
     // ページコントロールによるページ遷移
@@ -49,22 +49,22 @@ final class TutorialViewPresenter {
         updateCurrentPage(newPage: newPage)
     }
 
-    private func isLastPage() -> Bool {
-        return currentPage >= allPageCount - 1
+    private func isLastPage(newPage: Int) -> Bool {
+        return newPage > allPageCount - 1
     }
 
     private func updateCurrentPage(newPage: Int) {
-        if !isLastPage() {
-            delegate?.scrollInfoList(newPage)
-        } else {
+        if isLastPage(newPage: newPage) {
             delegate?.closeTutorialView()
+        } else {
+            delegate?.scrollInfoList(newPage)
+            currentPage = newPage
         }
-        currentPage = newPage
         updateButtonTitleIfNeeded()
     }
 
     private func updateButtonTitleIfNeeded() {
-        let title = isLastPage() ? "さあ！始めよう！" : "次へ"
+        let title = isLastPage(newPage: currentPage + 1) ? "さあ！始めよう！" : "次へ"
         if title != currentButtonTitle {
             delegate?.updateButtonTitle(title)
             currentButtonTitle = title

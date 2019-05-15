@@ -26,9 +26,11 @@ class CustomTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning 
 
         let containerView = transitionContext.containerView
 
-        guard let transitionContextFromView = transitionContext.view(forKey: UITransitionContextViewKey.from) else { return }
-
-        guard let transitionContextToView = transitionContext.view(forKey: .to) else { return }
+        guard let transitionContextFromView = transitionContext.view(forKey: .from),
+            let transitionContextToView = transitionContext.view(forKey: .to) else {
+                transitionContext.completeTransition(true)
+                return
+        }
 
         containerView.insertSubview(transitionContextToView, belowSubview: transitionContextFromView)
 
@@ -40,6 +42,7 @@ class CustomTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning 
                 vc.setSubviews(isHidden: false)
                 vc.switchFlagForTutorial(isNotFinishTutorial: false)
             }
+            transitionContext.completeTransition(true)
         }
         
     }

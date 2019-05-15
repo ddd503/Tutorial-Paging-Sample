@@ -35,7 +35,7 @@
                                 </connections>
                             </button>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="wFb-yM-0Ae">
-                                <rect key="frame" x="187.5" y="657.5" width="39" height="37"/>
+                                <rect key="frame" x="187.5" y="654.5" width="39" height="37"/>
                                 <connections>
                                     <action selector="didTapPageControl:" destination="hf1-8S-F78" eventType="valueChanged" id="ddP-B1-eU3"/>
                                 </connections>
@@ -46,7 +46,7 @@
                             <constraint firstItem="fhz-GZ-1n3" firstAttribute="centerY" secondItem="7kZ-YQ-iye" secondAttribute="centerY" multiplier="1.6" id="36Q-QM-xv8"/>
                             <constraint firstItem="WUc-dA-hw9" firstAttribute="leading" secondItem="Vqv-Wj-MO1" secondAttribute="leading" id="7iV-rk-nEh"/>
                             <constraint firstItem="WUc-dA-hw9" firstAttribute="top" secondItem="7kZ-YQ-iye" secondAttribute="top" id="Sfm-4A-xcS"/>
-                            <constraint firstItem="fhz-GZ-1n3" firstAttribute="top" secondItem="wFb-yM-0Ae" secondAttribute="bottom" constant="5" id="diQ-hZ-DVZ"/>
+                            <constraint firstItem="fhz-GZ-1n3" firstAttribute="top" secondItem="wFb-yM-0Ae" secondAttribute="bottom" constant="8" id="diQ-hZ-DVZ"/>
                             <constraint firstItem="fhz-GZ-1n3" firstAttribute="centerX" secondItem="7kZ-YQ-iye" secondAttribute="centerX" id="fLw-yB-ha9"/>
                             <constraint firstAttribute="bottom" secondItem="WUc-dA-hw9" secondAttribute="bottom" id="jYb-Lm-cGr"/>
                             <constraint firstItem="wFb-yM-0Ae" firstAttribute="centerX" secondItem="7kZ-YQ-iye" secondAttribute="centerX" id="vY6-gT-3bh"/>

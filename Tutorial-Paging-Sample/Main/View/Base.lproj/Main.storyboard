@@ -37,7 +37,7 @@
                                     <constraint firstItem="Gah-0r-MXj" firstAttribute="centerX" secondItem="p0D-gf-eqC" secondAttribute="centerX" id="oRS-SG-Jym"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qBB-FW-ENn">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qBB-FW-ENn">
                                 <rect key="frame" x="25.5" y="653" width="363" height="38"/>
                                 <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="26"/>
                                 <state key="normal" title="もう一度チュートリアルを開く"/>
