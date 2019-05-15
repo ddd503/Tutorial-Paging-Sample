@@ -13,6 +13,7 @@ protocol TutorialViewPresenterDelegate: class {
     func didSetCurrentPage(_ newPage: Int)
     func scrollInfoList(_ newPage: Int)
     func updateButtonTitle(_ title: String)
+    func closeTutorialView()
 }
 
 final class TutorialViewPresenter {
@@ -55,6 +56,8 @@ final class TutorialViewPresenter {
     private func updateCurrentPage(newPage: Int) {
         if !isLastPage() {
             delegate?.scrollInfoList(newPage)
+        } else {
+            delegate?.closeTutorialView()
         }
         currentPage = newPage
         updateButtonTitleIfNeeded()

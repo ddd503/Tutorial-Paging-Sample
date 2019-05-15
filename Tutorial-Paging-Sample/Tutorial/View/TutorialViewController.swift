@@ -77,6 +77,10 @@ class TutorialViewController: UIViewController, TutorialViewPresenterDelegate {
         }
     }
 
+    func closeTutorialView() {
+        self.dismiss(animated: true, completion: nil)
+    }
+
 }
 
 extension TutorialViewController: InfoListViewControllerDelegate {

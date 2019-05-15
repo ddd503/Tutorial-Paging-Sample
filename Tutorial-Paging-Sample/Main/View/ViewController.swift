@@ -10,8 +10,9 @@ import UIKit
 
 class ViewController: UIViewController, ViewControllerPresenterDelegate {
 
-    @IBOutlet weak var label: UILabel!
-    @IBOutlet weak var waitingView: UIView!
+    @IBOutlet weak private var label: UILabel!
+    @IBOutlet weak private var tutorialButton: UIButton!
+    @IBOutlet weak private var waitingView: UIView!
     private let presenter = ViewControllerPresenter()
     
     override func viewDidLoad() {
@@ -24,6 +25,19 @@ class ViewController: UIViewController, ViewControllerPresenterDelegate {
         presenter.viewDidAppear()
     }
 
+    func setSubviews(isHidden: Bool) {
+        label.isHidden = isHidden
+        tutorialButton.isHidden = isHidden
+    }
+
+    func switchFlagForTutorial(isNotFinishTutorial: Bool) {
+        presenter.isNotFinishTutorial = isNotFinishTutorial
+    }
+
+    @IBAction func didTapTutorialButton(_ sender: UIButton) {
+        presenter.didTapTutorialButton()
+    }
+
     // MARK: ViewControllerPresenterDelegate
 
     func presentTutorialViewController() {
@@ -32,8 +46,14 @@ class ViewController: UIViewController, ViewControllerPresenterDelegate {
             return
         }
         waitingView.isHidden = true
+        tutorialVC.transitioningDelegate = self
         present(tutorialVC, animated: true)
     }
 
 }
 
+extension ViewController: UIViewControllerTransitioningDelegate {
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return CustomTransitionAnimator(duration: 1, fromVC: self)
+    }
+}

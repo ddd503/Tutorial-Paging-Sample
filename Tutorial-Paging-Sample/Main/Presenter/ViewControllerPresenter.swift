@@ -15,12 +15,18 @@ protocol ViewControllerPresenterDelegate: class {
 final class ViewControllerPresenter {
 
     weak var delegate: ViewControllerPresenterDelegate?
-    private var isNotFinishTutorial = true
+    var isNotFinishTutorial = true
 
     func viewDidAppear() {
         if isNotFinishTutorial {
             delegate?.presentTutorialViewController()
+
+            isNotFinishTutorial = false
         }
+    }
+
+    func didTapTutorialButton() {
+        delegate?.presentTutorialViewController()
     }
     
 }

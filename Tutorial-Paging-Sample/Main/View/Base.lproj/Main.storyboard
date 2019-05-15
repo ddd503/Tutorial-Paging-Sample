@@ -19,12 +19,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="メインページ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JsG-i0-usg">
-                                <rect key="frame" x="28" y="418" width="358.5" height="60"/>
+                                <rect key="frame" x="28" y="373" width="358.5" height="60"/>
                                 <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="60"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p0D-gf-eqC">
+                            <view userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p0D-gf-eqC">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Gah-0r-MXj">
@@ -37,20 +37,31 @@
                                     <constraint firstItem="Gah-0r-MXj" firstAttribute="centerX" secondItem="p0D-gf-eqC" secondAttribute="centerX" id="oRS-SG-Jym"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qBB-FW-ENn">
+                                <rect key="frame" x="25.5" y="653" width="363" height="38"/>
+                                <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="26"/>
+                                <state key="normal" title="もう一度チュートリアルを開く"/>
+                                <connections>
+                                    <action selector="didTapTutorialButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BNy-hc-Lvi"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="qBB-FW-ENn" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="1.5" id="1oX-u3-9fe"/>
                             <constraint firstItem="p0D-gf-eqC" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="6Dm-SA-f65"/>
                             <constraint firstItem="JsG-i0-usg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="OQg-9j-O9W"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="p0D-gf-eqC" secondAttribute="trailing" id="WdA-gq-sY0"/>
-                            <constraint firstItem="JsG-i0-usg" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="dFn-WX-Bzx"/>
+                            <constraint firstItem="JsG-i0-usg" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="0.9" id="dFn-WX-Bzx"/>
                             <constraint firstAttribute="bottom" secondItem="p0D-gf-eqC" secondAttribute="bottom" id="jkf-lz-nRh"/>
+                            <constraint firstItem="qBB-FW-ENn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tuG-s5-1GZ"/>
                             <constraint firstItem="p0D-gf-eqC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="xFL-Y7-tPT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="label" destination="JsG-i0-usg" id="64Z-cm-Pfg"/>
+                        <outlet property="tutorialButton" destination="qBB-FW-ENn" id="cXp-cs-q1C"/>
                         <outlet property="waitingView" destination="p0D-gf-eqC" id="kbX-ZS-MmT"/>
                     </connections>
                 </viewController>
