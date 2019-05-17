@@ -9,9 +9,12 @@
 import Foundation
 
 protocol TutorialViewPresenterDelegate: class {
-    func setup()
-    func didSetCurrentPage(_ newPage: Int)
-    func scrollInfoList(_ newPage: Int)
+    func setupCollectionView()
+    func setupForwardButton()
+    func receivedInfomation()
+    func setPageCount(_ pageCount: Int)
+    func updateCurrentPage(_ currentPage: Int)
+    func pagingInfoList(_ newPage: Int)
     func updateButtonTitle(_ title: String)
     func closeTutorialView()
 }
@@ -19,23 +22,24 @@ protocol TutorialViewPresenterDelegate: class {
 final class TutorialViewPresenter {
 
     weak var delegate: TutorialViewPresenterDelegate?
-    private var allPageCount = 0
-    private var currentPage = 0
+    var infomationList = [Infomation]()
     private var currentButtonTitle = "次へ"
+    private var currentPage = 0 {
+        didSet {
+            delegate?.updateCurrentPage(currentPage)
+        }
+    }
 
     func viewDidLoad() {
-        delegate?.setup()
-        delegate?.updateButtonTitle(currentButtonTitle)
-    }
-
-    func receivedAllPageCount(_ allPageCount: Int) {
-        self.allPageCount = allPageCount
-    }
-
-    // スクロールによるページ遷移
-    func setCurrentPage(page: Int) {
-        currentPage = page
-        delegate?.didSetCurrentPage(page)
+        delegate?.setupCollectionView()
+        delegate?.setupForwardButton()
+        infomationList = TutorialDataStore.requestTutorialInfo()
+        guard !infomationList.isEmpty else {
+            // エラー用のセルを出すもあり
+            fatalError("ローカルにチュートリアル情報がありません")
+        }
+        delegate?.receivedInfomation()
+        delegate?.setPageCount(infomationList.count)
         updateButtonTitleIfNeeded()
     }
 
@@ -49,15 +53,22 @@ final class TutorialViewPresenter {
         updateCurrentPage(newPage: newPage)
     }
 
+    // スクロールによるページ遷移
+    func scrollViewDidEndDecelerating(currentPageNumber: Int) {
+        currentPage = currentPageNumber
+        delegate?.updateCurrentPage(currentPageNumber)
+        updateButtonTitleIfNeeded()
+    }
+
     private func isLastPage(newPage: Int) -> Bool {
-        return newPage > allPageCount - 1
+        return newPage > infomationList.count - 1
     }
 
     private func updateCurrentPage(newPage: Int) {
         if isLastPage(newPage: newPage) {
             delegate?.closeTutorialView()
         } else {
-            delegate?.scrollInfoList(newPage)
+            delegate?.pagingInfoList(newPage)
             currentPage = newPage
         }
         updateButtonTitleIfNeeded()

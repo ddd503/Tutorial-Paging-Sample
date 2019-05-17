@@ -15,12 +15,11 @@ class TutorialViewController: UIViewController, TutorialViewPresenterDelegate {
         return storyBoard.instantiateInitialViewController() as? TutorialViewController
     }
 
-    @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var forwardButton: UIButton!
-    @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet weak private var collectionView: UICollectionView!
+    @IBOutlet weak private var forwardButton: UIButton!
+    @IBOutlet weak private var pageControl: UIPageControl!
 
     private let presenter = TutorialViewPresenter()
-    private var infoListVC: InfoListViewController?
 
     override var prefersStatusBarHidden: Bool {
         return true
@@ -30,13 +29,6 @@ class TutorialViewController: UIViewController, TutorialViewPresenterDelegate {
         super.viewDidLoad()
         presenter.delegate = self
         presenter.viewDidLoad()
-    }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let infoListVC = segue.destination as? InfoListViewController, segue.identifier == "toInfoListViewController" {
-            infoListVC.delegate = self
-            self.infoListVC = infoListVC
-        }
     }
 
     @IBAction func didTapForwardButton(_ sender: UIButton) {
@@ -49,7 +41,15 @@ class TutorialViewController: UIViewController, TutorialViewPresenterDelegate {
     
     // MARK: TutorialViewPresenterDelegate
 
-    func setup() {
+    func setupCollectionView() {
+        collectionView.contentInsetAdjustmentBehavior = .never
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.register(InfoViewCell.nib(),
+                                forCellWithReuseIdentifier: InfoViewCell.identifier)
+    }
+
+    func setupForwardButton() {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
             self.forwardButton.contentEdgeInsets = UIEdgeInsets(top: 10, left: 30, bottom: 10, right: 30)
@@ -57,18 +57,31 @@ class TutorialViewController: UIViewController, TutorialViewPresenterDelegate {
             self.forwardButton.layer.cornerRadius = 22
             self.forwardButton.layer.borderWidth = 2
             self.forwardButton.layer.borderColor = UIColor.white.cgColor
-            self.pageControl.hidesForSinglePage = true
         }
     }
 
-    func didSetCurrentPage(_ newPage: Int) {
+    func receivedInfomation() {
         DispatchQueue.main.async { [weak self] in
-            self?.pageControl.currentPage = newPage
+            self?.collectionView.reloadData()
         }
     }
 
-    func scrollInfoList(_ newPage: Int) {
-        infoListVC?.setPage(newPage)
+    func setPageCount(_ pageCount: Int) {
+        DispatchQueue.main.async { [weak self] in
+            self?.pageControl.numberOfPages = pageCount
+        }
+    }
+
+    func updateCurrentPage(_ currentPage: Int) {
+        DispatchQueue.main.async { [weak self] in
+            self?.pageControl.currentPage = currentPage
+        }
+    }
+
+    func pagingInfoList(_ newPage: Int) {
+        DispatchQueue.main.async { [weak self] in
+            self?.collectionView.scrollToItem(at: IndexPath(item: newPage, section: 0), at: .init(), animated: true)
+        }
     }
 
     func updateButtonTitle(_ title: String) {
@@ -83,15 +96,35 @@ class TutorialViewController: UIViewController, TutorialViewPresenterDelegate {
 
 }
 
-extension TutorialViewController: InfoListViewControllerDelegate {
-    func preparedInfoList(infoCount: Int) {
-        presenter.receivedAllPageCount(infoCount)
-        DispatchQueue.main.async { [weak self] in
-            self?.pageControl.numberOfPages = infoCount
-        }
+extension TutorialViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return presenter.infomationList.count
     }
 
-    func infoListViewDidEndDecelerating(currentPageNumber: Int) {
-        presenter.setCurrentPage(page: currentPageNumber)
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: InfoViewCell.identifier, for: indexPath) as! InfoViewCell
+        cell.setInfo(presenter.infomationList[indexPath.item])
+        return cell
+    }
+}
+
+extension TutorialViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return collectionView.bounds.size
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return .zero
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return .zero
+    }
+
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if let collectionView = scrollView as? UICollectionView,
+            let currentInfoCell = collectionView.visibleCells.first as? InfoViewCell {
+            presenter.scrollViewDidEndDecelerating(currentPageNumber: currentInfoCell.pageNumber)
+        }
     }
 }

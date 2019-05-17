@@ -26,8 +26,10 @@ class ViewController: UIViewController, ViewControllerPresenterDelegate {
     }
 
     func setSubviews(isHidden: Bool) {
-        label.isHidden = isHidden
-        tutorialButton.isHidden = isHidden
+        DispatchQueue.main.async { [weak self] in
+            self?.label.isHidden = isHidden
+            self?.tutorialButton.isHidden = isHidden
+        }
     }
 
     func switchFlagForTutorial(isNotFinishTutorial: Bool) {

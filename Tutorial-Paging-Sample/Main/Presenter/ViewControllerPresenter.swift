@@ -20,8 +20,6 @@ final class ViewControllerPresenter {
     func viewDidAppear() {
         if isNotFinishTutorial {
             delegate?.presentTutorialViewController()
-
-            isNotFinishTutorial = false
         }
     }
 
