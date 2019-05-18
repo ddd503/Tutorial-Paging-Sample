@@ -9,7 +9,7 @@
 import UIKit
 
 class TutorialViewController: UIViewController, TutorialViewPresenterDelegate {
-
+    
     class func make() -> TutorialViewController? {
         let storyBoard = UIStoryboard(name: String(describing: TutorialViewController.self), bundle: .main)
         return storyBoard.instantiateInitialViewController() as? TutorialViewController

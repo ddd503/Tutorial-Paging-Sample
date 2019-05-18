@@ -9,6 +9,7 @@
 import Foundation
 
 protocol TutorialViewPresenterDelegate: class {
+    init()
     func setupCollectionView()
     func setupForwardButton()
     func receivedInfomation()
