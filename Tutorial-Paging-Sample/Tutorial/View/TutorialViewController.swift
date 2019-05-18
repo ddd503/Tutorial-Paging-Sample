@@ -42,6 +42,7 @@ class TutorialViewController: UIViewController, TutorialViewPresenterDelegate {
     // MARK: TutorialViewPresenterDelegate
 
     func setupCollectionView() {
+        collectionView.isPagingEnabled = true
         collectionView.contentInsetAdjustmentBehavior = .never
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -120,7 +121,9 @@ extension TutorialViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return .zero
     }
+}
 
+extension TutorialViewController: UIScrollViewDelegate {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         if let collectionView = scrollView as? UICollectionView,
             let currentInfoCell = collectionView.visibleCells.first as? InfoViewCell {
