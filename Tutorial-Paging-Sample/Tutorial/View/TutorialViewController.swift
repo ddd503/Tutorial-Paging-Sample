@@ -10,7 +10,7 @@ import UIKit
 
 class TutorialViewController: UIViewController, TutorialViewPresenterDelegate {
     
-    class func make() -> TutorialViewController? {
+    static func make() -> TutorialViewController? {
         let storyBoard = UIStoryboard(name: String(describing: TutorialViewController.self), bundle: .main)
         return storyBoard.instantiateInitialViewController() as? TutorialViewController
     }
@@ -19,7 +19,7 @@ class TutorialViewController: UIViewController, TutorialViewPresenterDelegate {
     @IBOutlet weak private var forwardButton: UIButton!
     @IBOutlet weak private var pageControl: UIPageControl!
 
-    private let presenter = TutorialViewPresenter()
+    private var presenter: TutorialViewPresenter!
 
     override var prefersStatusBarHidden: Bool {
         return true
@@ -27,8 +27,12 @@ class TutorialViewController: UIViewController, TutorialViewPresenterDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter.delegate = self
         presenter.viewDidLoad()
+    }
+
+    func inject(presenter: TutorialViewPresenter) {
+        self.presenter = presenter
+        self.presenter.delegate = self
     }
 
     @IBAction func didTapForwardButton(_ sender: UIButton) {

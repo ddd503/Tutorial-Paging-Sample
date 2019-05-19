@@ -9,6 +9,7 @@
 import Foundation
 
 protocol ViewControllerPresenterDelegate: class {
+    func inject(presenter: ViewControllerPresenter)
     func presentTutorialViewController()
 }
 

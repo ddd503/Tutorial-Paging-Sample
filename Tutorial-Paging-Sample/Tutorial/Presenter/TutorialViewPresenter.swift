@@ -9,7 +9,7 @@
 import Foundation
 
 protocol TutorialViewPresenterDelegate: class {
-    init()
+    func inject(presenter: TutorialViewPresenter)
     func setupCollectionView()
     func setupForwardButton()
     func receivedInfomation()

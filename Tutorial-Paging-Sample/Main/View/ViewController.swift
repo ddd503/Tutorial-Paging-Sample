@@ -13,16 +13,16 @@ class ViewController: UIViewController, ViewControllerPresenterDelegate {
     @IBOutlet weak private var label: UILabel!
     @IBOutlet weak private var tutorialButton: UIButton!
     @IBOutlet weak private var waitingView: UIView!
-    private let presenter = ViewControllerPresenter()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        presenter.delegate = self
-    }
+    private var presenter: ViewControllerPresenter!
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         presenter.viewDidAppear()
+    }
+
+    func inject(presenter: ViewControllerPresenter) {
+        self.presenter = presenter
+        self.presenter.delegate = self
     }
 
     func setSubviews(isHidden: Bool) {
@@ -49,6 +49,7 @@ class ViewController: UIViewController, ViewControllerPresenterDelegate {
         }
         waitingView.isHidden = true
         tutorialVC.transitioningDelegate = self
+        tutorialVC.inject(presenter: TutorialViewPresenter())
         present(tutorialVC, animated: true)
     }
 
