@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, ViewControllerPresenterDelegate {
+class ViewController: UIViewController, ViewControllerPresenterOutputs, CustomTransitionAnimatorOutputs {
 
     @IBOutlet weak private var label: UILabel!
     @IBOutlet weak private var tutorialButton: UIButton!
@@ -22,25 +22,13 @@ class ViewController: UIViewController, ViewControllerPresenterDelegate {
 
     func inject(presenter: ViewControllerPresenter) {
         self.presenter = presenter
-        self.presenter.delegate = self
-    }
-
-    func setSubviews(isHidden: Bool) {
-        DispatchQueue.main.async { [weak self] in
-            self?.label.isHidden = isHidden
-            self?.tutorialButton.isHidden = isHidden
-        }
-    }
-
-    func switchFlagForTutorial(isNotFinishTutorial: Bool) {
-        presenter.isNotFinishTutorial = isNotFinishTutorial
     }
 
     @IBAction func didTapTutorialButton(_ sender: UIButton) {
         presenter.didTapTutorialButton()
     }
 
-    // MARK: ViewControllerPresenterDelegate
+    // MARK: ViewControllerPresenterOutputs
 
     func presentTutorialViewController() {
         guard let tutorialVC = TutorialViewController.make() else {
@@ -49,14 +37,27 @@ class ViewController: UIViewController, ViewControllerPresenterDelegate {
         }
         waitingView.isHidden = true
         tutorialVC.transitioningDelegate = self
-        tutorialVC.inject(presenter: TutorialViewPresenter())
+        tutorialVC.inject(presenter: TutorialViewPresenter(view: tutorialVC))
         present(tutorialVC, animated: true)
+    }
+
+    // MARK: CustomTransitionAnimatorOutputs
+
+    func setSubviewsIsHidden(_ isHidden: Bool) {
+        DispatchQueue.main.async { [weak self] in
+            self?.label.isHidden = isHidden
+            self?.tutorialButton.isHidden = isHidden
+        }
+    }
+
+    func finishedTransition(_ isFinish: Bool) {
+        presenter.setIsNotFinishTutorial(isFinish)
     }
 
 }
 
 extension ViewController: UIViewControllerTransitioningDelegate {
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return CustomTransitionAnimator(duration: 1, fromVC: self)
+        return presenter.animationControllerForDismissed()
     }
 }

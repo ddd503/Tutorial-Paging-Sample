@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TutorialViewController: UIViewController, TutorialViewPresenterDelegate {
+class TutorialViewController: UIViewController, TutorialViewPresenterOutputs {
     
     static func make() -> TutorialViewController? {
         let storyBoard = UIStoryboard(name: String(describing: TutorialViewController.self), bundle: .main)
@@ -32,7 +32,6 @@ class TutorialViewController: UIViewController, TutorialViewPresenterDelegate {
 
     func inject(presenter: TutorialViewPresenter) {
         self.presenter = presenter
-        self.presenter.delegate = self
     }
 
     @IBAction func didTapForwardButton(_ sender: UIButton) {
@@ -43,7 +42,7 @@ class TutorialViewController: UIViewController, TutorialViewPresenterDelegate {
         presenter.didTapPageControl(newPage: sender.currentPage)
     }
     
-    // MARK: TutorialViewPresenterDelegate
+    // MARK: TutorialViewPresenterOutputs
 
     func setupCollectionView() {
         collectionView.isPagingEnabled = true

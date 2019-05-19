@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func setRootVC() {
         let storyBoard = UIStoryboard(name: "Main", bundle: .main)
         let vc = storyBoard.instantiateInitialViewController() as! ViewController
-        vc.inject(presenter: ViewControllerPresenter())
+        vc.inject(presenter: ViewControllerPresenter(view: vc, customTransitionView: vc))
 
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = vc

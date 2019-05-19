@@ -8,14 +8,19 @@
 
 import UIKit
 
+protocol CustomTransitionAnimatorOutputs: class {
+    func setSubviewsIsHidden(_ isHidden: Bool)
+    func finishedTransition(_ isFinish: Bool)
+}
+
 class CustomTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
 
-    let duration: TimeInterval
-    weak var fromVC: UIViewController?
+    weak var view: CustomTransitionAnimatorOutputs!
+    private let duration: TimeInterval
 
-    init(duration: TimeInterval, fromVC: UIViewController) {
+    init(view: CustomTransitionAnimatorOutputs, duration: TimeInterval) {
+        self.view = view
         self.duration = duration
-        self.fromVC = fromVC
     }
 
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
@@ -38,10 +43,8 @@ class CustomTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning 
             transitionContextFromView.alpha = 0
         }) { [weak self] (_) in
             transitionContextFromView.removeFromSuperview()
-            if let vc = self?.fromVC as? ViewController {
-                vc.setSubviews(isHidden: false)
-                vc.switchFlagForTutorial(isNotFinishTutorial: false)
-            }
+            self?.view.setSubviewsIsHidden(false)
+            self?.view.finishedTransition(true)
             transitionContext.completeTransition(true)
         }
         

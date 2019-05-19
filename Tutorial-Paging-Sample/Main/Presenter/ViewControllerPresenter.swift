@@ -7,25 +7,46 @@
 //
 
 import Foundation
+import UIKit
 
-protocol ViewControllerPresenterDelegate: class {
-    func inject(presenter: ViewControllerPresenter)
+protocol ViewControllerPresenterInputs {
+    func viewDidAppear()
+    func didTapTutorialButton()
+    func setIsNotFinishTutorial(_ isNotFinish: Bool)
+    func animationControllerForDismissed() -> CustomTransitionAnimator
+}
+
+protocol ViewControllerPresenterOutputs: class {
     func presentTutorialViewController()
 }
 
-final class ViewControllerPresenter {
+final class ViewControllerPresenter: ViewControllerPresenterInputs {
 
-    weak var delegate: ViewControllerPresenterDelegate?
-    var isNotFinishTutorial = true
+    weak var view: ViewControllerPresenterOutputs!
+    weak var transitionView: CustomTransitionAnimatorOutputs!
+    private var isFinishTutorial = false
+
+    init(view: ViewControllerPresenterOutputs, customTransitionView: CustomTransitionAnimatorOutputs) {
+        self.view = view
+        self.transitionView = customTransitionView
+    }
 
     func viewDidAppear() {
-        if isNotFinishTutorial {
-            delegate?.presentTutorialViewController()
+        if !isFinishTutorial {
+            view.presentTutorialViewController()
         }
     }
 
     func didTapTutorialButton() {
-        delegate?.presentTutorialViewController()
+        view.presentTutorialViewController()
+    }
+
+    func setIsNotFinishTutorial(_ isFinish: Bool) {
+        isFinishTutorial = isFinish
+    }
+
+    func animationControllerForDismissed() -> CustomTransitionAnimator {
+        return CustomTransitionAnimator(view: transitionView, duration: 1)
     }
     
 }
