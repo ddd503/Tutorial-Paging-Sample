@@ -23,11 +23,12 @@ class InfoViewCell: UICollectionViewCell {
         return UINib(nibName: identifier, bundle: .main)
     }
 
-    func setInfo(_ info: Infomation) {
-        titleLabel.text = info.title
-        messageLabel.text = info.message
-        pageNumber = info.pageNumber
-        if let theme = ThemeType(rawValue: info.theme) {
+    func setInfo(_ info: Infomation?) {
+        titleLabel.text = info?.title
+        messageLabel.text = info?.message
+        pageNumber = info?.pageNumber ?? 0
+
+        if let info = info, let theme = ThemeType(rawValue: info.theme) {
             themeImageView.image = UIImage(named: theme.imageName)
             backgroundColor = theme.color
         } else {

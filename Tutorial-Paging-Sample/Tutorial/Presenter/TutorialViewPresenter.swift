@@ -9,7 +9,9 @@
 import Foundation
 
 protocol TutorialViewPresenterInputs {
+    var numberOfTutorialPages: Int { get }
     func viewDidLoad()
+    func tutorialInfo(forItem item: Int) -> Infomation?
     func didTapForwardButton()
     func didTapPageControl(newPage: Int)
     func scrollViewDidEndDecelerating(currentPageNumber: Int)
@@ -29,7 +31,7 @@ protocol TutorialViewPresenterOutputs: class {
 final class TutorialViewPresenter: TutorialViewPresenterInputs {
 
     private weak var view: TutorialViewPresenterOutputs!
-    var infomationList = [Infomation]()
+    private var infomationList = [Infomation]()
     private var currentButtonTitle = "次へ"
     private var currentPage = 0 {
         didSet {
@@ -39,6 +41,10 @@ final class TutorialViewPresenter: TutorialViewPresenterInputs {
 
     init(view: TutorialViewPresenterOutputs) {
         self.view = view
+    }
+
+    var numberOfTutorialPages: Int {
+        return infomationList.count
     }
 
     func viewDidLoad() {
@@ -52,6 +58,11 @@ final class TutorialViewPresenter: TutorialViewPresenterInputs {
         view.receivedInfomation()
         view.setPageCount(infomationList.count)
         updateButtonTitleIfNeeded()
+    }
+
+    func tutorialInfo(forItem item: Int) -> Infomation? {
+        guard item < infomationList.count else { return nil }
+        return infomationList[item]
     }
 
     // ボタンによるページ遷移

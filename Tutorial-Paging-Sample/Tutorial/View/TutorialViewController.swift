@@ -102,12 +102,12 @@ class TutorialViewController: UIViewController, TutorialViewPresenterOutputs {
 
 extension TutorialViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return presenter.infomationList.count
+        return presenter.numberOfTutorialPages
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: InfoViewCell.identifier, for: indexPath) as! InfoViewCell
-        cell.setInfo(presenter.infomationList[indexPath.item])
+        cell.setInfo(presenter.tutorialInfo(forItem: indexPath.item))
         return cell
     }
 }
